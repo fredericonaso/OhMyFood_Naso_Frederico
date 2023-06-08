@@ -349,7 +349,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
-  gap: 12px;
+  gap: 15px;
   padding-left: 10px;
 }
 .menus-container-card-entree--title {
@@ -384,7 +384,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
-  gap: 12px;
+  gap: 15px;
   padding-left: 10px;
   padding-top: 40px;
 }
@@ -420,7 +420,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   width: 95%;
-  gap: 12px;
+  gap: 15px;
   padding-left: 10px;
   padding-top: 40px;
 }
@@ -484,6 +484,10 @@ body {
 
 .food-name {
   font-weight: 700;
+}
+
+.food-description {
+  font-size: 15px;
 }
 
 .food-price {
