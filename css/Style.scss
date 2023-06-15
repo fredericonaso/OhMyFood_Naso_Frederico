@@ -44,11 +44,11 @@ body {
 //     animation: custom-loading 1s linear infinite;
 // }
 
-// @keyframes custom-loading {
-//     0% { transform: opacity(100%); }
-//     100% { transform: opacity(0%); }
+@keyframes custom-loading {
+    0% { transform: opacity(100%); }
+    100% { transform: opacity(0%); }
 
-// }
+ }
 .capitalize {
     text-transform: capitalize;
 }
@@ -295,7 +295,8 @@ body {
                         display: none;
                     }
                     > .heart-full{
-                        color: #FF79DA
+                        background: 
+                        linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
                     }
                 }
 
@@ -450,10 +451,26 @@ body {
     padding-top: 5%;
     padding-bottom: 5%;
     justify-content: space-around;
+    @media screen and (min-width:1024px) {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+      align-items: center;
+
+      &-logo{
+        width: 50%;
+        height: 50%;
+      }
+        
+    }
 }
 .arrow {
     color: black;
     font-size: 30px;
+    @media screen and (min-width:1024px) {
+        color: black;
+        font-size: 50px;
+    }
 }
 
 .menus {
@@ -483,6 +500,10 @@ body {
             width: 90%;
             align-items: center;
             padding-left: 10px;
+            @media screen and (min-width:1024px)  {
+                justify-content: center;
+                gap: 18px;
+            }
 
             &-title {
                 font-family: 'Shrikhand', sans-serif;
@@ -505,12 +526,21 @@ body {
                 width: 100%;
                 gap: 15px;
                 padding-left: 10px;
+                position: relative;
 
                 &--title {
                     text-transform: uppercase;
                     font-weight: 400;
                     font-size: 16px;
                     color: black;
+                    margin: 0;
+                    &-line{
+                        border-bottom: 2px solid #99E2D0;
+                        width: 40px;
+                        height: 1px;
+                        position: absolute;
+                        top: 18px;
+                    }
                 }
 
                 &--list {
@@ -535,6 +565,21 @@ body {
                         align-items: flex-start;
                         justify-content: space-around;
                         flex-wrap: nowrap;
+                        &--check{
+                            height: 69px;
+                            width: 25%;
+                            display: flex;
+                            align-items: center;
+                            background-color: #99E2D0;
+                            justify-content: center;
+                            border-radius: 0px 15px 15px 0px;
+                            > i{
+                                color: white;
+                            }
+                            @media screen and (min-width:767px) {
+                                width: 12%;
+                            }
+                        }
 
                     }
                 }
@@ -547,12 +592,20 @@ body {
                 gap: 15px;
                 padding-left: 10px;
                 padding-top: 40px;
+                position: relative;
 
                 &--title {
                     text-transform: uppercase;
                     font-weight: 400;
                     font-size: 16px;
                     color: black;
+                    &-line {
+                        border-bottom: 2px solid #99E2D0;
+                        width: 40px;
+                        height: 1px;
+                        position: absolute;
+                        top: 71px;
+                    }
                 }
 
                 &--list {
@@ -589,12 +642,20 @@ body {
                 gap: 15px;
                 padding-left: 10px;
                 padding-top: 40px;
+                position: relative;
 
                 &--title {
                     text-transform: uppercase;
                     font-weight: 400;
                     font-size: 16px;
                     color: black;
+                    &-line {
+                        border-bottom: 2px solid #99E2D0;
+                        width: 40px;
+                        height: 1px;
+                        position: absolute;
+                        top: 71px;
+                    }
                 }
 
                 &--list {
