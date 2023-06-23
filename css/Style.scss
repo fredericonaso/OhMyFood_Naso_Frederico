@@ -10,45 +10,66 @@
     --main--purple: #9356DC;
 }
 
-body {
+@mixin displayColumn {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin: 0;
-    position: relative;
-    > .loader{
-        height: 100%;
-        width: 100%;
-        max-width: 1444px;
-    }
+    flex-wrap: nowrap;
 }
 
-// .loarder{
-//     width: 100%;
-//     height: 100%;
-//     position: absolute;
-// }
-// .loader::before{
-//     content: "";
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//     overflow: hidden;
-//     background: #ffffff;
-//     opacity: 1;
-// }
-// .loader::after{
-//     box-sizing: border-box;
-//     content: "";
-//     position: absolute;
-//     animation: custom-loading 1s linear infinite;
-// }
+@mixin displayRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 
-@keyframes custom-loading {
-    0% { transform: opacity(100%); }
-    100% { transform: opacity(0%); }
 
- }
+body {
+    @include displayColumn;
+    align-items: center;
+    margin: 0;
+}
+
+.loader 
+{ &::before {
+    height: 100%;
+    width: 100%;
+    max-width: 1444px;
+    background-color: #EAEAEA;
+    margin: auto;
+    position: absolute;
+    z-index: 100;
+    top:0; left: 0; right: 0; bottom: 0;   
+}
+&::after{
+    height: 100%;
+    width: 100%;
+    max-width: 1444px;
+    background-color: transparent;
+    margin: auto;
+    position: absolute;
+    z-index: 100;
+    top:0; left: 0; right: 0; bottom: 0; 
+}
+}
+
+.loader{
+    transform: color(transparent);
+    animation: customloading forwards 6s ease-in-out infinite;
+    transition: all;
+}
+
+
+@keyframes customloading {
+    0% {
+        transform: opacity(1);
+    }
+
+    100% {
+        transform: opacity(0);
+    }
+
+}
+
 .capitalize {
     text-transform: capitalize;
 }
@@ -71,7 +92,8 @@ body {
     .logo {
         width: 50%;
     }
-    .location{
+
+    .location {
         width: 100%;
         height: 50px;
 
@@ -81,7 +103,7 @@ body {
         background-color: #EAEAEA;
         border-top: solid 0.5px rgba(197, 197, 197, 0.966);
         gap: 18px;
-       
+
     }
 }
 
@@ -198,10 +220,9 @@ body {
 }
 
 .restaurants {
+    @include displayColumn;
     width: 100%;
-    display: flex;
     box-sizing: border-box;
-    flex-direction: column;
     justify-content: space-around;
     padding-left: 10px;
     position: relative;
@@ -216,13 +237,21 @@ body {
     &-cards {
         width: 100%;
         // padding-left: 10%;
-        display: flex;
-        flex-flow: column nowrap;
+        @include displayColumn;
         align-items: center;
         justify-content: space-around;
-        gap: 18px;
+        gap: 40px;
         padding-bottom: 5%;
         position: relative;
+
+        &-separator {
+            @include displayColumn;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 40px;
+            padding-bottom: 25px;
+        }
 
         &-link {
             text-decoration: none;
@@ -233,14 +262,13 @@ body {
         }
 
         .card {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 95%;
-            height: auto;
+            @include displayColumn;
+            width: 100%;
+            height: 251px;
             background-color: white;
             border-radius: 15px;
             border-bottom: solid 0.5px #EAEAEA;
+            padding-bottom: 20px;
 
             img {
                 object-fit: cover;
@@ -252,10 +280,8 @@ body {
             }
 
             .container {
-                display: flex;
-                align-items: center;
+                @include displayRow;
                 justify-content: space-between;
-                flex-direction: row;
                 margin: 0;
                 width: 90%;
                 padding-left: 5%;
@@ -277,26 +303,30 @@ body {
                         margin: 0;
                     }
                 }
-                &-heart{
+
+                &-heart {
                     position: relative;
 
-                   > .heart-empty::before{
+                    >.heart-empty {
                         position: absolute;
                         top: 0px;
                         right: 0px;
+                        z-index: 1;
                     }
 
-                    > .heart-full{
-                        color: white;
-                    }
-                }
-                &-heart:hover{
-                    > .heart-empty{
-                        display: none;
-                    }
-                    > .heart-full{
-                        background: 
-                        linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+                    >.heart-full {
+                        z-index: 2;
+                        position: inherit;
+                        color: transparent;
+                        -webkit-background-clip: text;
+                        opacity: 0;
+                        transition: all;
+                        background-image: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+
+                        &:hover {
+                            animation: heartShow 0.5s forwards ease-in-out;
+                            transition: all;
+                        }
                     }
                 }
 
@@ -305,16 +335,26 @@ body {
         }
     }
 
-    @media screen and (min-width:1024px) {
-        display: flex;
-        flex-direction: column;
+    @keyframes heartShow {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @media screen and (min-width:768px) {
+        @include displayColumn;
         width: 100%;
 
         &-cards {
             flex-flow: column nowrap;
-            &-separator{
+
+            &-separator {
                 display: flex;
-                flex-flow: row;
+                flex-flow: row nowrap;
                 width: 100%;
             }
         }
@@ -357,7 +397,8 @@ body {
         padding-left: 5%;
         gap: 10px;
         padding-top: 10px;
-        &-text{
+
+        &-text {
             display: flex;
             flex-flow: column nowrap;
             gap: 10px;
@@ -399,7 +440,8 @@ body {
         &-content {
             flex-flow: row-reverse nowrap;
             width: 85%;
-            &-text{
+
+            &-text {
                 flex-flow: row nowrap;
                 width: 100%;
                 font-size: 16px;
@@ -451,22 +493,25 @@ body {
     padding-top: 5%;
     padding-bottom: 5%;
     justify-content: space-around;
-    @media screen and (min-width:1024px) {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: space-evenly;
-      align-items: center;
 
-      &-logo{
-        width: 50%;
-        height: 50%;
-      }
-        
+    @media screen and (min-width:1024px) {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &-logo {
+            width: 50%;
+            height: 50%;
+        }
+
     }
 }
+
 .arrow {
     color: black;
     font-size: 30px;
+
     @media screen and (min-width:1024px) {
         color: black;
         font-size: 50px;
@@ -481,8 +526,9 @@ body {
     position: relative;
     top: -49px;
     background: #f6f6f6;
+
     @media screen and (min-width:1024px) {
-        width: 85%;
+        width: 75%;
         align-items: center;
     }
 
@@ -490,8 +536,8 @@ body {
         display: flex;
         width: 100%;
         flex-direction: column;
-        
-        
+
+
 
         &-top {
             display: flex;
@@ -500,7 +546,8 @@ body {
             width: 90%;
             align-items: center;
             padding-left: 10px;
-            @media screen and (min-width:1024px)  {
+
+            @media screen and (min-width:1024px) {
                 justify-content: center;
                 gap: 18px;
             }
@@ -521,8 +568,7 @@ body {
             width: 90%;
 
             &-entree {
-                display: flex;
-                flex-flow: column nowrap;
+                @include displayColumn;
                 width: 100%;
                 gap: 15px;
                 padding-left: 10px;
@@ -534,7 +580,8 @@ body {
                     font-size: 16px;
                     color: black;
                     margin: 0;
-                    &-line{
+
+                    &-line {
                         border-bottom: 2px solid #99E2D0;
                         width: 40px;
                         height: 1px;
@@ -551,8 +598,7 @@ body {
                     border: none;
                     border-radius: 15px;
                     border-bottom: 0.5px solid lightgrey;
-                    display: flex;
-                    flex-flow: row nowrap;
+                    @include displayRow;
                     justify-content: space-evenly;
                     align-items: center;
                     padding-left: 10px;
@@ -565,23 +611,32 @@ body {
                         align-items: flex-start;
                         justify-content: space-around;
                         flex-wrap: nowrap;
-                        &--check{
+
+                        &--check {
                             height: 69px;
-                            width: 25%;
+                            width: 0%;
                             display: flex;
                             align-items: center;
                             background-color: #99E2D0;
                             justify-content: center;
                             border-radius: 0px 15px 15px 0px;
-                            > i{
+
+                            >i {
                                 color: white;
                             }
+
                             @media screen and (min-width:767px) {
-                                width: 12%;
+                                width: 0%;
+                            }
+
+                            &:hover {
+                                animation: checkShow 1s forwards;
+                                transition: all;
                             }
                         }
 
                     }
+
                 }
             }
 
@@ -599,6 +654,7 @@ body {
                     font-weight: 400;
                     font-size: 16px;
                     color: black;
+
                     &-line {
                         border-bottom: 2px solid #99E2D0;
                         width: 40px;
@@ -616,8 +672,7 @@ body {
                     border: none;
                     border-radius: 15px;
                     border-bottom: 0.5px solid lightgrey;
-                    display: flex;
-                    flex-flow: row nowrap;
+                    @include displayRow;
                     justify-content: space-evenly;
                     align-items: center;
                     padding-left: 5px;
@@ -636,8 +691,7 @@ body {
             }
 
             &-dessert {
-                display: flex;
-                flex-flow: column nowrap;
+                @include displayColumn;
                 width: 100%;
                 gap: 15px;
                 padding-left: 10px;
@@ -649,6 +703,7 @@ body {
                     font-weight: 400;
                     font-size: 16px;
                     color: black;
+
                     &-line {
                         border-bottom: 2px solid #99E2D0;
                         width: 40px;
@@ -666,8 +721,7 @@ body {
                     border: none;
                     border-radius: 15px;
                     border-bottom: 0.5px solid lightgrey;
-                    display: flex;
-                    flex-flow: row nowrap;
+                    @include displayRow;
                     justify-content: space-evenly;
                     align-items: center;
                     padding-left: 5px;
@@ -686,8 +740,7 @@ body {
             }
 
             &-cat {
-                display: flex;
-                flex-direction: column;
+                @include displayColumn;
                 align-items: center;
                 gap: 40px;
                 text-decoration: none;
@@ -713,12 +766,21 @@ body {
         }
     }
 
+    @keyframes checkShow {
+        0% {
+            width: 0%;
+        }
+
+        100% {
+            width: 25%;
+        }
+    }
+
 }
 
 .food {
     width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
+    @include displayRow;
     justify-content: space-between;
 }
 
@@ -735,11 +797,10 @@ body {
     color: #353535;
 }
 
-.menus-mainpage{
+.menus-mainpage {
     @media screen and (min-width:1024px) {
-        display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+        @include displayColumn;
+        align-items: center;
     }
-    
+
 }
