@@ -18,47 +18,6 @@ body {
   margin: 0;
 }
 
-.loader::before {
-  height: 100%;
-  width: 100%;
-  max-width: 1444px;
-  background-color: #EAEAEA;
-  margin: auto;
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.loader::after {
-  height: 100%;
-  width: 100%;
-  max-width: 1444px;
-  background-color: transparent;
-  margin: auto;
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.loader {
-  transform: color(transparent);
-  animation: customloading forwards 6s ease-in-out infinite;
-  transition: all;
-}
-
-@keyframes customloading {
-  0% {
-    transform: opacity(1);
-  }
-  100% {
-    transform: opacity(0);
-  }
-}
 .capitalize {
   text-transform: capitalize;
 }
@@ -453,99 +412,129 @@ body {
   }
 }
 
-.menus {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
+@media screen and (min-width: 1024px) {
+  .menus-mainpage {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+}
+
+.menu {
   border-radius: 40px 40px 0px 0px;
   position: relative;
   top: -49px;
   background: #f6f6f6;
-}
-@media screen and (min-width: 1024px) {
-  .menus {
-    width: 75%;
-    align-items: center;
-  }
-}
-.menus-container {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
-.menus-container-top {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  width: 90%;
-  align-items: center;
-  padding-left: 10px;
-}
-@media screen and (min-width: 1024px) {
-  .menus-container-top {
-    justify-content: center;
-    gap: 18px;
-  }
-}
-.menus-container-top-title {
-  font-family: "Shrikhand", sans-serif;
-  font-size: 28px;
-}
-.menus-container-top-heart {
-  font-size: 28px;
-}
-.menus-container-card {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 90%;
-}
-.menus-container-card-entree {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
+  align-items: center;
+  gap: 40px;
+}
+@media screen and (min-width: 1024px) {
+  .menu {
+    width: 70%;
+    align-items: center;
+  }
+}
+.menu-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
   width: 100%;
-  gap: 15px;
-  padding-left: 10px;
+  justify-content: space-around;
+}
+@media screen and (min-width: 1024px) {
+  .menu-top {
+    width: 40%;
+  }
+}
+.menu-top-title {
+  font-family: "Shrikhand", sans-serif;
+  text-transform: capitalize;
+  font-size: 28px;
+}
+
+.coeur {
   position: relative;
 }
-.menus-container-card-entree--title {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 16px;
-  color: black;
-  margin: 0;
+.coeur-empty {
+  position: absolute;
+  top: -15px;
+  right: 0px;
+  z-index: 1;
 }
-.menus-container-card-entree--title-line {
+.coeur-full {
+  position: absolute;
+  z-index: 2;
+  color: transparent;
+  -webkit-background-clip: text;
+  opacity: 0;
+  top: -15px;
+  right: 0px;
+  transition: all;
+  background-image: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+}
+.coeur-full:hover {
+  animation: heartShow 0.5s forwards ease-in-out;
+}
+
+.menu-body {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+.menu-body-head {
+  position: relative;
+}
+.menu-body-title {
+  font-weight: 200;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.menu-body-bar {
   border-bottom: 2px solid #99E2D0;
   width: 40px;
   height: 1px;
   position: absolute;
-  top: 18px;
+  top: 34px;
 }
-.menus-container-card-entree--list {
-  width: 100%;
-  height: 69px;
-  background-color: #f6f6f6;
-  border: none;
-  border-radius: 15px;
-  border-bottom: 0.5px solid lightgrey;
+
+.menu-bcard-content {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-left: 10px;
-  box-shadow: 1px 6px 5px 5px #f6f6f6;
+  width: 98%;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
 }
-.menus-container-card-entree--list--food {
-  width: 100%;
+.menu-bcard-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
   flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+  align-items: stretch;
 }
-.menus-container-card-entree--list--food--check {
+.menu-bcard-title {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.menu-bcard-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.menu-bcard-descrip {
+  font-size: 15px;
+}
+.menu-bcard-check {
   height: 69px;
   width: 0%;
   display: flex;
@@ -554,119 +543,42 @@ body {
   justify-content: center;
   border-radius: 0px 15px 15px 0px;
 }
-.menus-container-card-entree--list--food--check > i {
+.menu-bcard-check > i {
   color: white;
+  font-size: 20px;
+  opacity: 0;
 }
-@media screen and (min-width: 767px) {
-  .menus-container-card-entree--list--food--check {
+
+@keyframes checkani {
+  0% {
     width: 0%;
   }
+  100% {
+    width: 15%;
+  }
 }
-.menus-container-card-entree--list--food--check:hover {
-  animation: checkShow 1s forwards;
-  transition: all;
+@keyframes iconshow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-.menus-container-card-plats {
-  display: flex;
-  flex-flow: column nowrap;
-  width: 100%;
-  gap: 15px;
-  padding-left: 10px;
-  padding-top: 40px;
-  position: relative;
+@keyframes cardreduce {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 80%;
+  }
 }
-.menus-container-card-plats--title {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 16px;
-  color: black;
+.euro {
+  font-weight: 600;
+  color: #353535;
 }
-.menus-container-card-plats--title-line {
-  border-bottom: 2px solid #99E2D0;
-  width: 40px;
-  height: 1px;
-  position: absolute;
-  top: 71px;
-}
-.menus-container-card-plats--list {
-  width: 98%;
-  height: 69px;
-  background-color: #f6f6f6;
-  border: none;
-  border-radius: 15px;
-  border-bottom: 0.5px solid lightgrey;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-left: 5px;
-  box-shadow: 1px 6px 5px 5px #f6f6f6;
-}
-.menus-container-card-plats--list--food {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-}
-.menus-container-card-dessert {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 100%;
-  gap: 15px;
-  padding-left: 10px;
-  padding-top: 40px;
-  position: relative;
-}
-.menus-container-card-dessert--title {
-  text-transform: uppercase;
-  font-weight: 400;
-  font-size: 16px;
-  color: black;
-}
-.menus-container-card-dessert--title-line {
-  border-bottom: 2px solid #99E2D0;
-  width: 40px;
-  height: 1px;
-  position: absolute;
-  top: 71px;
-}
-.menus-container-card-dessert--list {
-  width: 98%;
-  height: 69px;
-  background-color: #f6f6f6;
-  border: none;
-  border-radius: 15px;
-  border-bottom: 0.5px solid lightgrey;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-left: 5px;
-  box-shadow: 1px 6px 5px 5px #F6f6f6;
-}
-.menus-container-card-dessert--list--food {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-wrap: nowrap;
-}
-.menus-container-card-cat {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 40px;
-  text-decoration: none;
-  padding-top: 40px;
-}
-.menus-container-card-cat--btn {
+
+.commande {
   width: 218px;
   height: 50px;
   border-radius: 20px 20px 20px 20px;
@@ -678,44 +590,6 @@ body {
   font-weight: bold;
   box-shadow: 1px 6px 5px 5px #F3F3F3;
 }
-.menus-container-card-cat--btn:hover {
+.commande:hover {
   filter: brightness(105%);
-}
-@keyframes checkShow {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 25%;
-  }
-}
-
-.food {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
-.food-name {
-  font-weight: 700;
-}
-
-.food-description {
-  font-size: 15px;
-}
-
-.food-price {
-  font-weight: 600;
-  color: #353535;
-}
-
-@media screen and (min-width: 1024px) {
-  .menus-mainpage {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-  }
 }/*# sourceMappingURL=Style.css.map */
