@@ -263,7 +263,7 @@ body {
     opacity: 1;
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .restaurants {
     display: flex;
     flex-direction: column;
@@ -312,6 +312,11 @@ body {
   flex-flow: column nowrap;
   gap: 10px;
 }
+@media screen and (min-width: 1024px) {
+  .footer-content-text {
+    justify-content: flex-end;
+  }
+}
 .footer-content-logo {
   color: white;
   width: 30%;
@@ -333,7 +338,7 @@ body {
   color: #EAEAEA;
   padding-left: 5px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .footer {
     height: 114px;
     flex-flow: row-reverse nowrap;
@@ -513,6 +518,14 @@ body {
   background: white;
   box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
 }
+.menu-bcard-content:hover > .menu-bcard-check {
+  animation: checkani 1000ms forwards ease-in-out;
+  transition: all;
+}
+.menu-bcard-content:hover > .menu-bcard-check > i {
+  animation: iconshow 1000ms forwards ease-in-out;
+  transition: all;
+}
 .menu-bcard-container {
   display: flex;
   flex-direction: column;
@@ -563,14 +576,6 @@ body {
   }
   100% {
     opacity: 1;
-  }
-}
-@keyframes cardreduce {
-  0% {
-    width: 100%;
-  }
-  100% {
-    width: 80%;
   }
 }
 .euro {

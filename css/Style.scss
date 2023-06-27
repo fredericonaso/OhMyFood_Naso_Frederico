@@ -385,7 +385,7 @@ body {
         }
     }
 
-    @media screen and (min-width:768px) {
+    @media screen and (min-width:1024px) {
         @include displayColumn;
         width: 100%;
 
@@ -404,9 +404,6 @@ body {
 
 //* heart , new*//
 .container-new {
-
-
-
     &-text {
         color: #008766;
         position: absolute;
@@ -420,8 +417,6 @@ body {
 
     }
 }
-
-
 
 .footer {
     display: flex;
@@ -442,6 +437,10 @@ body {
             display: flex;
             flex-flow: column nowrap;
             gap: 10px;
+            @media screen and (min-width:1024px) {
+                justify-content: flex-end;
+                
+            }
         }
 
         &-logo {
@@ -471,7 +470,7 @@ body {
         }
     }
 
-    @media screen and (min-width:768px) {
+    @media screen and (min-width:1024px) {
         height: 114px;
         flex-flow: row-reverse nowrap;
         align-items: flex-end;
@@ -659,6 +658,15 @@ body {
         border-radius: 15px;
         background: white;
         box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
+        &:hover > .menu-bcard-check{
+            animation: checkani 1000ms forwards ease-in-out;
+            transition: all;
+        }
+        &:hover > .menu-bcard-check > i{
+            animation: iconshow 1000ms forwards ease-in-out;
+            transition: all;
+        }
+        
     }
 
     &-container {
@@ -717,16 +725,6 @@ body {
 
     100% {
         opacity: 1;
-    }
-}
-
-@keyframes cardreduce {
-    0% {
-        width: 100%;
-    }
-
-    100% {
-        width: 80%;
     }
 }
 
