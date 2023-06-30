@@ -18,6 +18,86 @@ body {
   margin: 0;
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 100;
+  background-color: #343436;
+  animation: wrapper 3s ease-in-out forwards;
+  transition: all;
+}
+.wrapper .loading {
+  display: flex;
+  position: absolute;
+  width: auto;
+  height: 20px;
+  transition: all 0.4s ease;
+}
+.wrapper .loading .loader {
+  display: block;
+  align-items: flex-end;
+  background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  animation: loader 1.2s ease infinite both;
+  border-radius: 4px;
+  bottom: 0;
+}
+.wrapper .loading .loader:nth-child(1) {
+  transform: translateX(-20px);
+}
+.wrapper .loading .loader:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.wrapper .loading .loader:nth-child(3) {
+  animation-delay: 0.8s;
+  transform: translateX(20px);
+}
+@keyframes loader {
+  0% {
+    height: 5px;
+    bottom: 0;
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+    bottom: 0;
+    height: 15px;
+  }
+  50% {
+    opacity: 1;
+    height: 5px;
+    bottom: calc(100% - 5px);
+  }
+  75% {
+    opacity: 0.3;
+    height: 15px;
+    bottom: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 5px;
+    bottom: 0;
+  }
+}
+@keyframes wrapper {
+  0% {
+    transform: opacity(1);
+    display: initial;
+  }
+  100% {
+    transform: opaticy(0);
+    display: none;
+    height: 0;
+    overflow: hidden;
+  }
+}
+
 .capitalize {
   text-transform: capitalize;
 }
@@ -113,6 +193,7 @@ body {
   width: 100%;
   height: 72.38px;
   background-color: #f6f6f6;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: none;
   border-radius: 20px;
   border-bottom: 0.5px solid lightgrey;
@@ -360,29 +441,11 @@ body {
 .background {
   width: 100%;
 }
-.background-palette--du--gout {
+.background-image {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
-  height: auto;
-}
-.background-la--note--enchantee {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: auto;
-}
-.background-le--delice--des--sens {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: auto;
-}
-.background-a--la--francaise {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: 100%;
-  height: auto;
+  height: 383px;
 }
 
 .header-menus {
@@ -451,9 +514,9 @@ body {
   width: 100%;
   justify-content: space-around;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .menu-top {
-    width: 40%;
+    width: 55%;
   }
 }
 .menu-top-title {
@@ -526,13 +589,18 @@ body {
   animation: iconshow 1000ms forwards ease-in-out;
   transition: all;
 }
+.menu-bcard-content:hover > .menu-bcard-container {
+  animation: cardwid 1000ms forwards ease-in-out;
+  transition: all;
+}
 .menu-bcard-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  width: 100%;
+  width: 98%;
   justify-content: center;
   align-items: stretch;
+  margin: 0 1%;
 }
 .menu-bcard-title {
   font-weight: 700;
@@ -546,6 +614,9 @@ body {
 }
 .menu-bcard-descrip {
   font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .menu-bcard-check {
   height: 69px;
@@ -562,6 +633,26 @@ body {
   opacity: 0;
 }
 
+@keyframes cardwid {
+  0% {
+    width: 98%;
+  }
+  100% {
+    width: 83%;
+  }
+}
+@keyframes text {
+  0% {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  100% {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 @keyframes checkani {
   0% {
     width: 0%;
