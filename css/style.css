@@ -93,6 +93,7 @@ body {
   100% {
     opacity: 0;
     display: none;
+    height: 0;
     overflow: hidden;
   }
 }
