@@ -87,13 +87,12 @@ body {
 }
 @keyframes wrapper {
   0% {
-    transform: opacity(1);
+    opacity: 1;
     display: initial;
   }
   100% {
-    transform: opaticy(0);
+    opacity: 0;
     display: none;
-    height: 0;
     overflow: hidden;
   }
 }
@@ -688,4 +687,4 @@ body {
 }
 .commande:hover {
   filter: brightness(105%);
-}/*# sourceMappingURL=Style.css.map */
+}/*# sourceMappingURL=style.css.map */

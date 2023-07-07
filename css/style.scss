@@ -114,13 +114,13 @@ body {
  }
  @keyframes wrapper{
     0%{
-        transform: opacity(1);
+        opacity:1;
         display: initial;
     }
     100%{
-        transform: opaticy(0);
+        opacity:0;
         display: none;
-        height: 0;
+        // height: 0;
         overflow: hidden;
     }
  }
