@@ -27,7 +27,7 @@ body {
   position: fixed;
   z-index: 100;
   background-color: #F2f2f2;
-  animation: wrapper 3s ease-in-out forwards;
+  animation: wrapper 5s ease forwards;
   transition: all;
 }
 .wrapper .loading {
@@ -331,6 +331,9 @@ body {
   opacity: 0;
   transition: all;
   background-image: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+  transition: opacity 0;
+  animation-name: heartShow_reverse;
+  animation-duration: 1s;
 }
 .restaurants-cards .card .container-heart > .heart-full:hover {
   animation: heartShow 0.5s forwards ease-in-out;
@@ -342,6 +345,14 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes heartShow_reverse {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -544,6 +555,8 @@ body {
   right: 0px;
   transition: all;
   background-image: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+  animation-name: heartShow_reverse;
+  animation-duration: 1s;
 }
 .coeur-full:hover {
   animation: heartShow 0.5s forwards ease-in-out;

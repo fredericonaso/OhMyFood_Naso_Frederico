@@ -41,7 +41,7 @@ body {
     position: fixed;
     z-index: 100;
     background-color: #F2f2f2;
-    $wrapper: wrapper 3s ease-in-out forwards;
+    $wrapper: wrapper 5s ease forwards;
     animation: $wrapper;
     transition: all;
 
@@ -379,11 +379,13 @@ body {
                         opacity: 0;
                         transition: all;
                         background-image: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
-
+                        transition: opacity 0;
                         &:hover {
                             animation: heartShow 0.5s forwards ease-in-out;
                             transition: all;
                         }
+                        animation-name:heartShow_reverse;
+                        animation-duration:1s;
                     }
                 }
 
@@ -399,6 +401,14 @@ body {
 
         100% {
             opacity: 1;
+        }
+    }
+    @keyframes heartShow_reverse{
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity:0;
         }
     }
 
@@ -623,7 +633,10 @@ body {
         &:hover {
             animation: heartShow 0.5s forwards ease-in-out;
         }
+        animation-name:heartShow_reverse;
+        animation-duration: 1s;
     }
+   
 
 }
 
@@ -676,6 +689,7 @@ body {
             }
             
         }
+        
     }
 
     &-container {
@@ -763,6 +777,7 @@ body {
         opacity: 1;
     }
 }
+
 
 .euro {
     font-weight: 600;
