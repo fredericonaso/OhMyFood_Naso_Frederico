@@ -673,21 +673,33 @@ body {
         border-radius: 15px;
         background: white;
         box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
+        
         &:hover {
             &>.menu-bcard-check {
-                animation: checkani 1000ms forwards ease-in-out;
+                animation: checkani 1000ms both ease-in-out;
                 transition: all;
 
                 &>i {
-                    animation: iconshow 1000ms forwards ease-in-out;
+                    animation: iconshow 1000ms both ease-in-out;
                     transition: all;
                 }
             }
             &>.menu-bcard-container{
-                animation: cardwid 1000ms forwards ease-in-out;
+                animation: cardwid 1000ms both ease-in-out;
                 transition: all;
             }
-            
+        }
+        &>.menu-bcard-check{
+            animation: checkani_reverse 1000ms both ease-in-out;
+            transition: all;
+        }
+        &>i{
+            animation: iconshow_reverse 1000ms both ease-in-out;
+            transition: all;
+        }
+        &>.menu-bcard-container{
+            animation: cardwid_reverse 1000ms both ease-in-out;
+            transition: all;
         }
         
     }
@@ -715,6 +727,7 @@ body {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        
         
     }
 
@@ -777,6 +790,40 @@ body {
         opacity: 1;
     }
 }
+
+@keyframes cardwid_reverse{
+    0%{
+        width: 83%;
+    }
+    100%{
+        width: 98%;
+    }
+}
+
+
+@keyframes checkani_reverse {
+    0% {
+        width: 15%;
+    }
+
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes iconshow_reverse {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+
 
 
 .euro {
